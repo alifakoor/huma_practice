@@ -1,0 +1,41 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package user;
+
+service UserService {
+	rpc create (CreateUser) returns (User) {}
+	rpc findAll (google.protobuf.Empty) returns (UserList) {}
+	rpc findOne (UserId) returns (User) {}
+	rpc update (User) returns (User) {}
+	rpc remove (UserId) returns (RemovedUser) {}
+}
+
+message UserId {
+	int32 id = 1;
+}
+
+message CreateUser {
+	string username = 1;
+	string firstname = 2;
+	string lastname = 3;
+	string password = 4;
+	string email = 5;
+}
+
+message UserList {
+	repeated User users = 1;
+}
+
+message User {
+	int32 id = 1;
+	string username = 2;
+	string firstname = 3;
+	string lastname = 4;
+	string password = 5;
+	string email = 6;
+}
+
+message RemovedUser {
+	bool isRemoved = 1;
+}

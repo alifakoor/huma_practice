@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "ff76f8ca-da51-4783-a4d5-f391283eb030",
+		"name": "Huma",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Practice",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"alifakoor\",\r\n    \"firstname\": \"Ali\",\r\n    \"lastname\": \"Fakoor\",\r\n    \"password\": \"asdf123\",\r\n    \"email\": \"ali.fakoor@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}user",
+							"host": [
+								"{{base_url}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}user",
+							"host": [
+								"{{base_url}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}user/1",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"alifakoor\",\r\n    \"firstname\": \"AmirAli\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}user/5",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}user/4",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/",
+			"type": "string"
+		}
+	]
+}
