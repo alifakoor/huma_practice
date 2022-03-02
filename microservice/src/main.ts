@@ -9,6 +9,7 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
+        url: '0.0.0.0:3001',
         package: 'user',
         protoPath: join(__dirname, './user/user.proto'),
       },
