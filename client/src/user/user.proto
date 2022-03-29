@@ -4,27 +4,15 @@ import "google/protobuf/empty.proto";
 package user;
 
 service UserService {
-	rpc create (CreateUser) returns (User) {}
 	rpc findAll (google.protobuf.Empty) returns (UserList) {}
+	rpc create (CreateUser) returns (User) {}
 	rpc findOne (UserId) returns (User) {}
-	rpc update (User) returns (User) {}
+	rpc update (User) returns (UpdateUser) {}
 	rpc remove (UserId) returns (RemovedUser) {}
 }
 
 message UserId {
 	int32 id = 1;
-}
-
-message CreateUser {
-	string username = 1;
-	string firstname = 2;
-	string lastname = 3;
-	string password = 4;
-	string email = 5;
-}
-
-message UserList {
-	repeated User users = 1;
 }
 
 message User {
@@ -36,6 +24,26 @@ message User {
 	string email = 6;
 }
 
+message UserList {
+	repeated User users = 1;
+}
+
+message CreateUser {
+	string username = 1;
+	string firstname = 2;
+	string lastname = 3;
+	string password = 4;
+	string email = 5;
+}
+
+message UpdateUser {
+	int32 id = 1;
+	bool isUpdated = 2;
+	string message = 3;
+}
+
 message RemovedUser {
-	bool isRemoved = 1;
+	int32 id = 1;
+	bool isRemoved = 2;
+	string message = 3;
 }
