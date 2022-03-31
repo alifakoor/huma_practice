@@ -20,6 +20,9 @@ export class User {
   @Column()
   email: string;
 
+  @Column({ default: false })
+  isDeleted: boolean;
+
   constructor(partial: Partial<User>) {
     Object.assign(this, partial);
   }

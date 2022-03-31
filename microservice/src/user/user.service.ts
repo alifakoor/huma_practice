@@ -24,7 +24,7 @@ export class UserService {
   }
 
   async findAll(): Promise<User[]> {
-    return await this.userRepo.find();
+    return await this.userRepo.find({ where: { isDeleted: false } });
   }
 
   async findOne(id: number): Promise<User> {
@@ -41,5 +41,9 @@ export class UserService {
 
   async remove(user: User): Promise<DeleteResult> {
     return await this.userRepo.delete(user);
+  }
+
+  async softRemove(id: number): Promise<UpdateResult> {
+    return await this.userRepo.update(id, { isDeleted: true });
   }
 }
