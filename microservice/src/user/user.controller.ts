@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseInterceptors } from '@nestjs/common';
 import { GrpcMethod, Payload, RpcException } from '@nestjs/microservices';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -11,8 +11,10 @@ import {
   UserId,
   UserList,
 } from './interfaces/user.interface';
+import { LoggingInterceptor } from 'src/logger/logger.interceptor';
 
 @Controller()
+@UseInterceptors(LoggingInterceptor)
 export class UserController implements UserControllerInterface {
   constructor(private readonly userService: UserService) {}
 
