@@ -40,7 +40,7 @@ export class UserController implements UserControllerInterface {
   @GrpcMethod('UserService', 'findOne')
   async findOne(@Payload() payload: UserId): Promise<User> {
     const user = await this.userService.findOne(payload.id);
-    if (!user || user.isDeleted) {
+    if (!user) {
       throw new RpcException({
         code: 5,
         message: 'User not found',
@@ -53,7 +53,7 @@ export class UserController implements UserControllerInterface {
   @GrpcMethod('UserService', 'update')
   async update(@Payload() payload: UpdateUserDto): Promise<UpdateUser> {
     const user = await this.userService.findOne(payload.id);
-    if (!user || user.isDeleted) {
+    if (!user) {
       throw new RpcException({
         code: 5,
         message: 'User not found',
@@ -84,7 +84,7 @@ export class UserController implements UserControllerInterface {
   @GrpcMethod('UserService', 'remove')
   async remove(@Payload() payload: User): Promise<RemoveUser> {
     const user = await this.userService.findOne(payload.id);
-    if (!user || user.isDeleted) {
+    if (!user) {
       throw new RpcException({
         code: 5,
         message: 'User not found',
